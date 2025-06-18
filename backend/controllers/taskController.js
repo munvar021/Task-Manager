@@ -1,5 +1,5 @@
 const { AppDataSource } = require("../config/database");
-const Task = require("../models/Task");
+const Task = require("../models/task");
 const { validationResult } = require("express-validator");
 const { v4: uuidv4 } = require("uuid");
 
@@ -83,13 +83,11 @@ const createTask = async (req, res, next) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "Validation failed",
-          errors: errors.array(),
-        });
+      return res.status(400).json({
+        success: false,
+        message: "Validation failed",
+        errors: errors.array(),
+      });
     }
 
     const repository = await getRepository();
@@ -105,13 +103,11 @@ const createTask = async (req, res, next) => {
 
     const savedTask = await repository.save(newTask);
 
-    res
-      .status(201)
-      .json({
-        success: true,
-        message: "Task created successfully",
-        data: savedTask,
-      });
+    res.status(201).json({
+      success: true,
+      message: "Task created successfully",
+      data: savedTask,
+    });
   } catch (error) {
     next(error);
   }
@@ -122,13 +118,11 @@ const updateTask = async (req, res, next) => {
   try {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res
-        .status(400)
-        .json({
-          success: false,
-          message: "Validation failed",
-          errors: errors.array(),
-        });
+      return res.status(400).json({
+        success: false,
+        message: "Validation failed",
+        errors: errors.array(),
+      });
     }
 
     const repository = await getRepository();
@@ -152,13 +146,11 @@ const updateTask = async (req, res, next) => {
 
     const updatedTask = await repository.save(existingTask);
 
-    res
-      .status(200)
-      .json({
-        success: true,
-        message: "Task updated successfully",
-        data: updatedTask,
-      });
+    res.status(200).json({
+      success: true,
+      message: "Task updated successfully",
+      data: updatedTask,
+    });
   } catch (error) {
     next(error);
   }
