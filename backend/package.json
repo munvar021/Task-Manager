@@ -27,7 +27,8 @@
     "reflect-metadata": "^0.1.13",
     "sqlite3": "^5.1.6",
     "typeorm": "^0.3.17",
-    "uuid": "^9.0.1"
+    "uuid": "^9.0.1",
+    "nodemon": "^3.1.10"
   },
   "devDependencies": {
     "nodemon": "^3.1.10"
