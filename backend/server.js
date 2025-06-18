@@ -36,13 +36,24 @@ app.use(
 // Compression middleware
 app.use(compression());
 
-// CORS configuration
+const allowedOrigins = [
+  process.env.FRONTEND_URL,
+  "http://localhost:3000", // add local dev if needed
+];
+
 const corsOptions = {
-  origin: process.env.FRONTEND_URL,
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
   allowedHeaders: ["Content-Type", "Authorization"],
   credentials: true,
 };
+
 app.use(cors(corsOptions));
 
 // Body parsing middleware
