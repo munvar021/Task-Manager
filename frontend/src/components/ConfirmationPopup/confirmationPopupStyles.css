@@ -86,7 +86,6 @@
   background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
   -webkit-background-clip: text;
   background-clip: text;
-  text-transform: uppercase;
   letter-spacing: 0.04em;
   display: flex;
   align-items: center;
@@ -132,8 +131,6 @@
   font-weight: 600;
   font-size: 1.125rem;
   line-height: 1.5;
-  scrollbar-width: thin;
-  scrollbar-color: #6366f1 transparent;
 }
 
 .popup-body::-webkit-scrollbar {
@@ -163,7 +160,6 @@
   padding: 1rem 2.5rem;
   border-radius: 20px;
   font-weight: 700;
-  text-transform: uppercase;
   box-shadow: 0 0 18px #8b5cf6aa;
   transition: box-shadow 0.3s ease;
 }
