@@ -95,37 +95,34 @@ app.use(errorHandler);
 // Initialize database and start server
 const startServer = async () => {
   try {
-    console.log("🔄 Initializing database connection...");
+    console.log("Initializing database connection...");
     await AppDataSource.initialize();
-    console.log("✅ Database connection established successfully");
+    console.log("Database connection established successfully");
 
     app.listen(PORT, () => {
-      console.log(`🚀 Server is running on port ${PORT}`);
-      console.log(`📊 Health check: http://localhost:${PORT}/health`);
-      console.log(`📋 API Base URL: http://localhost:${PORT}${API_PREFIX}`);
-      console.log(`🌍 Environment: ${process.env.NODE_ENV || "development"}`);
+      console.log(`Server is running on port ${PORT}`);
     });
   } catch (error) {
-    console.error("❌ Error during server startup:", error);
+    console.error("Error during server startup:", error);
     process.exit(1);
   }
 };
 
 // Graceful shutdown
 process.on("SIGTERM", async () => {
-  console.log("🔄 SIGTERM received, shutting down gracefully...");
+  console.log("SIGTERM received, shutting down gracefully...");
   if (AppDataSource.isInitialized) {
     await AppDataSource.destroy();
-    console.log("✅ Database connection closed");
+    console.log("Database connection closed");
   }
   process.exit(0);
 });
 
 process.on("SIGINT", async () => {
-  console.log("🔄 SIGINT received, shutting down gracefully...");
+  console.log("SIGINT received, shutting down gracefully...");
   if (AppDataSource.isInitialized) {
     await AppDataSource.destroy();
-    console.log("✅ Database connection closed");
+    console.log("Database connection closed");
   }
   process.exit(0);
 });

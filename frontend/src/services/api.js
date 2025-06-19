@@ -20,7 +20,7 @@ api.interceptors.request.use(
     return config;
   },
   (error) => {
-    console.error("❌ API Request Error:", error);
+    console.error("API Request Error:", error);
     return Promise.reject(error);
   }
 );
@@ -29,23 +29,20 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => {
     if (process.env.NODE_ENV === "development") {
-      console.log(`✅ API Response: ${response.status} ${response.config.url}`);
+      console.log(`API Response: ${response.status} ${response.config.url}`);
     }
     return response;
   },
   (error) => {
-    console.error(
-      "❌ API Response Error:",
-      error.response?.data || error.message
-    );
+    console.error("API Response Error:", error.response?.data || error.message);
 
     // Handle specific error cases
     if (error.response?.status === 404) {
-      console.warn("🔍 Resource not found");
+      console.warn("Resource not found");
     } else if (error.response?.status === 500) {
-      console.error("🔥 Server error");
+      console.error("Server error");
     } else if (error.code === "ECONNREFUSED") {
-      console.error("🔌 Connection refused - Is the backend server running?");
+      console.error("Connection refused - Is the backend server running?");
     }
 
     return Promise.reject(error);
