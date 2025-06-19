@@ -205,6 +205,12 @@
   margin-left: auto;
 }
 
+.plus-icon {
+  font-size: 10px;
+  color: #f4f4f6;
+  transition: transform 0.3s ease;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
   .header-content {

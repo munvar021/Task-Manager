@@ -194,7 +194,6 @@ export default function Home() {
               </p>
               {filter === "all" && (
                 <Link href="/add-task" className="btn btn-primary">
-                  <i className="fas fa-plus"></i>
                   Create Your First Task
                 </Link>
               )}
